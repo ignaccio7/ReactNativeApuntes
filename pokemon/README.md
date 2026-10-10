@@ -2,6 +2,15 @@ SVG en react native
 https://react-svgr.com/playground/?native=true
 npx expo install react-native-svg
 
+Instalar tailwind
+https://www.nativewind.dev/docs/getting-started/installation
+
+Instalar iconos
+https://docs.expo.dev/guides/icons/
+https://github.com/oblador/react-native-vector-icons
+https://oblador.github.io/react-native-vector-icons/#Ionicons
+npm install @react-native-vector-icons/ionicons
+
 # Welcome to your Expo app 👋
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).

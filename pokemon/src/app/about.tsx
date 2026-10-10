@@ -1,9 +1,56 @@
-import { Text, View } from "react-native";
+import { Link } from "expo-router";
+import { Pressable, ScrollView, Text, View } from "react-native";
+import { Ionicons } from "@react-native-vector-icons/ionicons";
+import { IconInfo } from "@/components/Icons";
 
-export default function Explore() {
+export default function About() {
   return (
-    <View>
-      <Text>Explore</Text>
+    <View className="mt-24">
+      <ScrollView className="px-4">
+        <View className="flex-row justify-between pb-4">
+          <Text className="text-white text-2xl">About</Text>
+          <Link asChild href={"/"}>
+            <Pressable>
+              <View className="flex-row gap-1 items-center">
+                <Text className="text-white">
+                  <IconInfo />
+                </Text>
+                <Text className="text-white">Ir al inicio</Text>
+              </View>
+            </Pressable>
+          </Link>
+        </View>
+        <Text className="text-white pb-4">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus,
+          eius officiis illum dolores iste recusandae adipisci voluptatem, atque
+          id rem corrupti facere earum cum. Ratione eveniet deserunt obcaecati
+          molestiae ab!
+        </Text>
+        <Text className="text-white pb-4">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus,
+          eius officiis illum dolores iste recusandae adipisci voluptatem, atque
+          id rem corrupti facere earum cum. Ratione eveniet deserunt obcaecati
+          molestiae ab!
+        </Text>
+        <Text className="text-white pb-4">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus,
+          eius officiis illum dolores iste recusandae adipisci voluptatem, atque
+          id rem corrupti facere earum cum. Ratione eveniet deserunt obcaecati
+          molestiae ab!
+        </Text>
+        <Text className="text-white pb-4">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus,
+          eius officiis illum dolores iste recusandae adipisci voluptatem, atque
+          id rem corrupti facere earum cum. Ratione eveniet deserunt obcaecati
+          molestiae ab!
+        </Text>
+        <Text className="text-white pb-4">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus,
+          eius officiis illum dolores iste recusandae adipisci voluptatem, atque
+          id rem corrupti facere earum cum. Ratione eveniet deserunt obcaecati
+          molestiae ab!
+        </Text>
+      </ScrollView>
     </View>
   );
 }

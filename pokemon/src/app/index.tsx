@@ -1,10 +1,20 @@
 import { PokemonCard } from "@/components/PokemonCard";
 import PokemonLogo from "@/components/PokemonLogo";
 import { getPokemons, getPokemonsWithImages } from "@/lib/pokemon";
+import { Link } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
-import { ActivityIndicator, FlatList, StyleSheet, View } from "react-native";
+import {
+  ActivityIndicator,
+  FlatList,
+  StyleSheet,
+  View,
+  Text,
+  Pressable,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+// import { Ionicons } from "@react-native-vector-icons/ionicons";
+import { IconInfo } from "@/components/Icons";
 
 type Pokemon = {
   name: string;
@@ -36,16 +46,52 @@ export default function Index() {
   }, [pokemons]);
 
   return (
-    <SafeAreaView style={{ backgroundColor: "#000000", flex: 1 }}>
-      <View
-        style={{
-          width: "70%",
-          height: 50,
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <PokemonLogo />
+    <SafeAreaView style={{ flex: 1 }}>
+      <View className="w-full flex-row items-center justify-between px-4">
+        <View
+          style={{
+            width: 100,
+            height: 50,
+            justifyContent: "center",
+          }}
+        >
+          <PokemonLogo />
+        </View>
+        {/* <Link
+          href={"/about"}
+          style={{ color: "#fff" }}
+          className="text-xl text-blue-500"
+        >
+          Ir al about
+        </Link> */}
+        <View className="grow justify-end items-end">
+          <Link asChild href={"/about"}>
+            <Pressable>
+              {({ pressed }) => {
+                const renderText = !pressed ? "Acerca de" : "nosostros";
+                return (
+                  <View className="flex-row items-center">
+                    <Text
+                      className={`${pressed ? "text-red-400" : "text-blue-400"}`}
+                    >
+                      {/* <Ionicons
+                        name="information-circle"
+                        color={"text-blue-400"}
+                        size={30}
+                      /> */}
+                      <IconInfo />
+                    </Text>
+                    <Text
+                      className={`${pressed ? "text-red-400" : "text-blue-400"}`}
+                    >
+                      {renderText}
+                    </Text>
+                  </View>
+                );
+              }}
+            </Pressable>
+          </Link>
+        </View>
       </View>
       <View style={styles.container}>
         <StatusBar style="light" />
