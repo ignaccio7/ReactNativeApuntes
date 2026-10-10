@@ -1,4 +1,5 @@
 // import { DarkTheme, DefaultTheme, ThemeProvider } from "expo-router";
+import "@/global.css";
 import { Slot } from "expo-router";
 import { StyleSheet, View } from "react-native";
 // import * as SplashScreen from "expo-splash-screen";

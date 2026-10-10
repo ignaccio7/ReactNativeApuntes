@@ -4,6 +4,7 @@ export function PokemonCard({ image, name }: { image: string; name: string }) {
   return (
     <View style={styles.card}>
       <Image
+        className=""
         source={{
           uri: image,
         }}
@@ -13,7 +14,7 @@ export function PokemonCard({ image, name }: { image: string; name: string }) {
           resizeMode: "contain",
         }}
       />
-      <Text style={styles.text} key={image}>
+      <Text className="text-xl font-bold capitalize px-1" style={styles.text}>
         {name}
       </Text>
     </View>
@@ -29,6 +30,8 @@ const styles = StyleSheet.create({
     borderStyle: "solid",
     flexDirection: "row",
     alignItems: "center",
+    paddingTop: 4,
+    paddingBottom: 8,
   },
   text: {
     color: "#d6d6d6",
