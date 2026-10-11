@@ -4,6 +4,7 @@ import { getPokemons, getPokemonsWithImages } from "@/lib/pokemon";
 import { Link } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
+import ScreenLayout from "@/components/ScreenLayout";
 import {
   ActivityIndicator,
   FlatList,
@@ -12,7 +13,7 @@ import {
   Text,
   Pressable,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+// import { SafeAreaView } from "react-native-safe-area-context";
 // import { Ionicons } from "@react-native-vector-icons/ionicons";
 import { IconInfo } from "@/components/Icons";
 
@@ -46,7 +47,10 @@ export default function Index() {
   }, [pokemons]);
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <ScreenLayout>
+      {/* <SafeAreaView style={{ flex: 1 }}> */}
+      {/* Estamos cambiando este header por el stack screenoptions */}
+      {/* 
       <View className="w-full flex-row items-center justify-between px-4">
         <View
           style={{
@@ -64,11 +68,12 @@ export default function Index() {
         >
           Ir al about
         </Link> */}
+      {/* 
         <View className="grow justify-end items-end">
           <Link asChild href={"/about"}>
             <Pressable>
               {({ pressed }) => {
-                const renderText = !pressed ? "Acerca de" : "nosostros";
+                const renderText = !pressed ? "Acerca de" : "nosotros";
                 return (
                   <View className="flex-row items-center">
                     <Text
@@ -79,6 +84,7 @@ export default function Index() {
                         color={"text-blue-400"}
                         size={30}
                       /> */}
+      {/* 
                       <IconInfo />
                     </Text>
                     <Text
@@ -93,6 +99,7 @@ export default function Index() {
           </Link>
         </View>
       </View>
+      */}
       <View style={styles.container}>
         <StatusBar style="light" />
         {/* <Text style={styles.text}>{JSON.stringify(data, null, 2)}</Text> */}
@@ -126,17 +133,16 @@ export default function Index() {
           />
         )}
       </View>
-    </SafeAreaView>
+      {/* </SafeAreaView> */}
+    </ScreenLayout>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#060606",
     alignItems: "center",
     justifyContent: "center",
-    paddingBlock: 4,
     paddingInline: 10,
   },
   text: {

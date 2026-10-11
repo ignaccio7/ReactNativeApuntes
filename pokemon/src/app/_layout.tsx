@@ -1,7 +1,10 @@
 // import { DarkTheme, DefaultTheme, ThemeProvider } from "expo-router";
+import { IconInfo } from "@/components/Icons";
+import PokemonLogo from "@/components/PokemonLogo";
 import "@/global.css";
-import { Slot } from "expo-router";
-import { StyleSheet, View } from "react-native";
+import { Link, Stack } from "expo-router";
+// import { Slot } from "expo-router";
+import { Pressable, StyleSheet, View, Text } from "react-native";
 // import * as SplashScreen from "expo-splash-screen";
 // import { useColorScheme } from "react-native";
 
@@ -14,7 +17,51 @@ export default function TabLayout() {
   // const colorScheme = useColorScheme();
   return (
     <View style={styles.container}>
-      <Slot />
+      {/* Esta configuracion sera global pero se puede personalizar por pantalla como lo haremos en las demas */}
+      <Stack
+        screenOptions={{
+          headerStyle: { backgroundColor: "#000" },
+          headerTintColor: "white",
+          headerTitle: "",
+          headerLeft: () => {
+            return (
+              <View
+                style={{
+                  width: 100,
+                  height: 50,
+                  justifyContent: "center",
+                }}
+              >
+                <PokemonLogo />
+              </View>
+            );
+          },
+          headerRight: () => (
+            <Link asChild href={"/about"}>
+              <Pressable>
+                {({ pressed }) => {
+                  const renderText = !pressed ? "Acerca de" : "nosotros";
+                  return (
+                    <View className="flex-row items-center">
+                      <Text
+                        className={`${pressed ? "text-red-400" : "text-blue-400"}`}
+                      >
+                        <IconInfo />
+                      </Text>
+                      <Text
+                        className={`${pressed ? "text-red-400" : "text-blue-400"}`}
+                      >
+                        {renderText}
+                      </Text>
+                    </View>
+                  );
+                }}
+              </Pressable>
+            </Link>
+          ),
+        }}
+      />
+      {/* <Slot /> */}
       {/* <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <AnimatedSplashOverlay />
       <AppTabs />

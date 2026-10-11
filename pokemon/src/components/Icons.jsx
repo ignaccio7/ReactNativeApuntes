@@ -14,3 +14,9 @@ export function IconInfo(props) {
 export function IconHome(props) {
   return <Ionicons name="home" color={"currentColor"} size={30} {...props} />;
 }
+
+export function IconPrevious(props) {
+  return (
+    <Ionicons name="backspace" color={"currentColor"} size={30} {...props} />
+  );
+}

@@ -1,25 +1,43 @@
-import { Link } from "expo-router";
+import { Link, Stack } from "expo-router";
 import { Pressable, ScrollView, Text, View } from "react-native";
-import { Ionicons } from "@react-native-vector-icons/ionicons";
-import { IconInfo } from "@/components/Icons";
+import { IconHome } from "@/components/Icons";
+import ScreenLayout from "@/components/ScreenLayout";
 
 export default function About() {
   return (
-    <View className="mt-24">
+    <ScreenLayout>
       <ScrollView className="px-4">
-        <View className="flex-row justify-between pb-4">
+        <Stack.Screen
+          options={{
+            headerStyle: { backgroundColor: "#09f" },
+            headerTintColor: "black",
+            headerRight: () => (
+              <Link asChild href={"/"}>
+                <Pressable>
+                  <View className="flex-row gap-1 items-center">
+                    <Text className="text-white">
+                      <IconHome />
+                    </Text>
+                    <Text className="text-white">Ir al inicio</Text>
+                  </View>
+                </Pressable>
+              </Link>
+            ),
+          }}
+        />
+        {/* <View className="flex-row justify-between pb-4">
           <Text className="text-white text-2xl">About</Text>
           <Link asChild href={"/"}>
             <Pressable>
               <View className="flex-row gap-1 items-center">
                 <Text className="text-white">
-                  <IconInfo />
+                  <IconHome />
                 </Text>
                 <Text className="text-white">Ir al inicio</Text>
               </View>
             </Pressable>
           </Link>
-        </View>
+        </View> */}
         <Text className="text-white pb-4">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus,
           eius officiis illum dolores iste recusandae adipisci voluptatem, atque
@@ -51,7 +69,7 @@ export default function About() {
           molestiae ab!
         </Text>
       </ScrollView>
-    </View>
+    </ScreenLayout>
   );
 }
 // import { Image } from "expo-image";
