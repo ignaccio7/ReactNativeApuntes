@@ -36,35 +36,25 @@ export async function getPokemonsWithImages(pokemons) {
   return Promise.all(res);
 }
 
-export async function getGameDetails(slug) {
-  const GAME_DETAILS = `https://internal-prod.apigee.fandom.net/v1/xapi/composer/metacritic/pages/games/${slug}/web?&apiKey=1MOZgmNFxvmljaQR1X9KAij9Mo4xAY3u`;
+export async function getPokemonInfo(pokename) {
+  const POKEMON_DETAIL = `https://pokeapi.co/api/v2/pokemon/${pokename}`;
 
-  const rawData = await fetch(GAME_DETAILS);
+  const rawData = await fetch(POKEMON_DETAIL);
   const json = await rawData.json();
 
-  const { components } = json;
-  const { title, description, criticScoreSummary, images } = components[0];
-  const { score } = criticScoreSummary;
+  const image = json.sprites.other.home.front_default;
+  const name = pokename
 
-  // get the card image
-  const cardImage = images.find((image) => image.typeName === "cardImage");
-  const { bucketType, bucketPath } = cardImage;
-  const img = `https://www.metacritic.com/a/img/${bucketType}${bucketPath}`;
+  const MOVE_DETAIL = json.moves[0].move.url
+  const rawMove = await fetch(MOVE_DETAIL);
+  const jsonMove = await rawMove.json();
 
-  const rawReviews = components[3].data.items;
-
-  // get the reviews
-  const reviews = rawReviews.map((review) => {
-    const { quote, score, date, publicationName, author } = review;
-    return { quote, score, date, publicationName, author };
-  });
+  const rawMoves = jsonMove.effect_entries
+  const move = rawMoves.find((m) => m.language.name === "en").effect
 
   return {
-    img,
-    title,
-    slug,
-    description,
-    score,
-    reviews,
+    name,
+    image,
+    move
   };
 }

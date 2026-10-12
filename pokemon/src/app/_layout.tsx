@@ -4,7 +4,7 @@ import PokemonLogo from "@/components/PokemonLogo";
 import "@/global.css";
 import { Link, Stack } from "expo-router";
 // import { Slot } from "expo-router";
-import { Pressable, StyleSheet, View, Text } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 // import * as SplashScreen from "expo-splash-screen";
 // import { useColorScheme } from "react-native";
 

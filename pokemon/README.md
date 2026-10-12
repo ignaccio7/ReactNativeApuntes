@@ -1,3 +1,5 @@
+npx expo start
+
 SVG en react native
 https://react-svgr.com/playground/?native=true
 npx expo install react-native-svg
